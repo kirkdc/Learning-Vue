@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+
+        <div id="app">
+            <h3> Directives </h3>
+            {{ message }}
+            <br>
+            {{ message2 }}
+            <br>
+            <br>
+            <br>
+        </div>
+
+        <div id="directives">
+          <span v-if="seen"> Make me disappear</span>
+          <br>
+          <br>
+          <ol>
+            <li v-for="todo in todos">
+            {{ todo.text }}
+            <!-- this pulls the text from each of the items in the array -->
+            </li>
+          </ol>
+        </div>
+
+        <div id="userInteraction">
+            <h3> User interaction directives </h3>
+            <p>{{ message }}</p>
+            <!-- v-on is a directive allows us to add event listeners that invoke methods on your vue instance -->
+            <!-- You have to assign a method name then create that method in your js file. Here the method name is 'reverseMessage' -->
+            <button v-on:click="reverseMessage">Reverse Message</button>
+            <br>
+            <br>
+            <p>{{ userchange }}</p>
+            <input v-model="userchange">
+        </div>
+
+        <div id='components'>
+          <h3> Components </h3>
+            <ol>
+                <todo-item
+                  v-for="item in groceryList"
+                  v-bind:todo="item"
+                  v-bind:key="item.id"
+                >
+                </todo-item>
+            </ol>
+        </div>
+
+
+        <script src="index.js"></script>
+    </body>
+</html>
